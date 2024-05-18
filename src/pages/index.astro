@@ -26,7 +26,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Sora Ai</h1>
+      <h1>GPT-4o</h1>
       <!-- <a
         target="_blank"
         href="/rss.xml"
@@ -44,12 +44,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         <span class="sr-only">RSS Feed</span>
       </a> -->
 
-      <h2>Try OpenAI Sora</h2>
+      <h2>Try OpenAI GPT-4o</h2>
       <h2>
-        Creating video from text/image, generating loop video, extending video
-        forward and backward
+        We’re announcing GPT-4o, our new flagship model that can reason across
+        audio, vision, and text in real time.
       </h2>
-      <h2>Be the first to know when Sora is live! Join the waitlist !</h2>
+      <h2>
+        Be the first to use GPT-4o when GPT-4o is live! Join the waitlist !
+      </h2>
 
       <!-- HTML -->
       <form id="email-subscription">
@@ -142,774 +144,306 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     <head>
       <style>
-        /* 设置视频容器的样式 */
-        #video-container {
-          width: 1100px; /* 设置父容器的最大宽度为 1100px */
-          margin: 0 auto; /* 将视频容器居中 */
-          display: flex; /* 使用 Flexbox 布局 */
-          flex-wrap: wrap; /* 允许元素换行 */
-          justify-content: flex-start; /* 水平间距相等 */
-          gap: 20px; /* 设置视频元素之间的水平间距 */
-        }
-
-        /* 设置视频元素的样式 */
-        .video-item {
-          width: calc((100% - 40px) / 3); /* 每行显示3个视频，减去间距 */
-          margin-bottom: 60px; /* 设置视频元素之间的垂直间距 */
-          height: 300px; /* 视频容器的高度 */
-        }
-
-        video {
-          width: 500px; /* 视频元素占满父容器的宽度 */
-          height: 300px; /* 视频元素占满父容器的高度 */
-          object-fit: cover; /* 确保视频铺满整个视频框 */
-        }
-
-        Layout h2:nth-of-type(1) {
-          position: relative; /* 设置标题为相对定位 */
-          left: 900px; /* 设置标题的左边距为视频容器的左边距的负值 */
-        }
+        /* Layout h2:nth-of-type(1) {
+          position: relative; 
+          left: 900px; 
+        } */
       </style>
     </head>
 
     <body>
-      <h2 class="move-right">OpenAI官网视频</h2>
-
-      <!-- 使用一个容器包裹视频元素 -->
-      <div id="video-container">
-        <!-- 第一个视频元素 -->
-        <div class="video-item">
-          <video controls>
-            <source
-              src="https://cdn.openai.com/tmp/s/sampling_1.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-          <span class="video-caption">提示词文字1</span>
-          <!-- 添加提示词文字 -->
-        </div>
-
-        <!-- 第二个视频元素 -->
-        <div class="video-item">
-          <video controls>
-            <source
-              src="https://cdn.openai.com/tmp/s/sampling_2.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-          <span class="video-caption">提示词文字1</span>
-          <!-- 添加提示词文字 -->
-        </div>
-
-        <!-- 第三个视频元素 -->
-        <div class="video-item">
-          <video controls>
-            <source
-              src="https://cdn.openai.com/tmp/s/sampling_3.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <!-- 第四个视频元素 -->
-        <div class="video-item">
-          <video controls>
-            <source
-              src="https://cdn.openai.com/tmp/s/sampling_4.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <!-- 第五个视频元素 -->
-        <div class="video-item">
-          <video controls>
-            <source
-              src="https://cdn.openai.com/tmp/s/sampling_5.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <!-- 第六个视频元素 -->
-        <div class="video-item">
-          <video controls>
-            <source
-              src="https://cdn.openai.com/tmp/s/sampling_6.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <!-- 在这里添加更多视频元素 -->
-      </div>
-    </body>
-
-    <Hr />
-    <section id="article">
-      {
-        featuredPosts.length > 0 && (
-          <>
-            <section id="featured">
-              <h2>Featured</h2>
-              <ul>
-                {featuredPosts.map(({ data, slug }) => (
-                  <Card
-                    href={`/posts/${slug}/`}
-                    frontmatter={data}
-                    secHeading={false}
-                  />
-                ))}
-              </ul>
-            </section>
-            {recentPosts.length > 0 && <Hr />}
-          </>
-        )
-      }
-
-      {
-        recentPosts.length > 0 && (
-          <section id="recent-posts">
-            <h2>The latest news about Sora</h2>
-            <ul>
-              {recentPosts.map(
-                ({ data, slug }, index) =>
-                  index < 4 && (
+      <Hr />
+      <section id="article">
+        {
+          featuredPosts.length > 0 && (
+            <>
+              <section id="featured">
+                <h2>Featured</h2>
+                <ul>
+                  {featuredPosts.map(({ data, slug }) => (
                     <Card
                       href={`/posts/${slug}/`}
                       frontmatter={data}
                       secHeading={false}
                     />
-                  )
-              )}
-            </ul>
-          </section>
-        )
-      }
-
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts/">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-
-      <h2>FAQ</h2>
-      <div class="faq">
-        <div class="faq-item">
-          <h2 class="faq-question">1. <b>问题一</b></h2>
-          <p class="faq-answer" style="display: none;">这是问题一的答案。</p>
-        </div>
-        <div class="faq-item">
-          <h2 class="faq-question">2. <b>问题二</b></h2>
-          <p class="faq-answer" style="display: none;">这是问题二的答案。</p>
-        </div>
-        <!-- 更多问题和答案... -->
-      </div>
-
-      <script>
-        var faqItems = document.getElementsByClassName("faq-item");
-
-        for (var i = 0; i < faqItems.length; i++) {
-          faqItems[i].addEventListener("click", function () {
-            var answer = this.getElementsByClassName("faq-answer")[0];
-            if (answer.style.display === "none") {
-              answer.style.display = "block";
-            } else {
-              answer.style.display = "none";
-            }
-          });
+                  ))}
+                </ul>
+              </section>
+              {recentPosts.length > 0 && <Hr />}
+            </>
+          )
         }
-      </script>
 
-      <!-- 这是复制的FAQ部分含有JS的代码： -->
+        {
+          recentPosts.length > 0 && (
+            <section id="recent-posts">
+              <h2>The latest news about GPT-4o</h2>
+              <ul>
+                {recentPosts.map(
+                  ({ data, slug }, index) =>
+                    index < 4 && (
+                      <Card
+                        href={`/posts/${slug}/`}
+                        frontmatter={data}
+                        secHeading={false}
+                      />
+                    )
+                )}
+              </ul>
+            </section>
+          )
+        }
 
-      <section className="bg-white text-zinc-900 py-8 sm:py-16">
-        <div className="max-w-4xl mx-auto px-6 lg:px-16">
-          <div className="mb-8">
-            <h2 className="text-4xl text-center font-bold">
-              Frequently asked questions
-            </h2>
-          </div>
-          <div className="grid grid-cols-1">
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  What do you mean by "Figma assets"
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="false"
-              >
-                You will have access to download the full Figma project
-                including all of the pages,the components,responsive pages,and
-                also the icons,illustrations, and images included in the
-                screens.
-              </p>
-            </div>
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  What does "free updates" include?
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="true"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="true"
-              >
-                The free updates that will be provided is based on the roadmap
-                that we have laid out for this project. It is also possible that
-                we will provide extra updates outside of the roadmap as well.
-              </p>
-            </div>
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  What does "lifetime access" exactly mean
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="false"
-              >
-                Once you have purchased either the design, code, or both
-                packages, you will have access to all of the future updates
-                based on the roadmap, free of charge.
-              </p>
-            </div>
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  What does the free version include?
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="false"
-              >
-                The free version of Windster includes a minimal style
-                guidelines, component variants, and a dashboard page with the
-                mobile version alongside it. You can use this version for any
-                purposes, because it is open-source under the MIT license.
-              </p>
-            </div>
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  How does support work?"
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="false"
-              >
-                We're aware of the importance of well qualified support, that is
-                why we decided that support will only be provided by the authors
-                that actually worked on this project.
-              </p>
-            </div>
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  What is the difference between Windster and Tailwind UI?
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="false"
-              >
-                Although both Windster and Tailwind UI are built for integration
-                with Tailwind CSS, the main difference is in the design, the
-                pages, the extra components and UI elements that Windster
-                includes. Additionally, Windster is a project that is still in
-                development, and later it will include both the application,
-                marketing, and e-commerce UI interfaces.
-              </p>
-            </div>
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  I want to build more than one project. Is that allowed?
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="false"
-              >
-                You can use Windster for an unlimited amount of projects,
-                whether it's a personal website, a SaaS app, or a website for a
-                client. As long as you don't build a product that will directly
-                compete with Windster either as a UI kit, theme, or template,
-                it's fine.
-              </p>
-            </div>
-            <div>
-              <div
-                className="flex items-center border-b border-zinc-200 cursor-pointer"
-              >
-                <h3
-                  className="text-xl py-4 font-medium text-zinc-800 flex-1 min-w-0"
-                >
-                  Can I use Windster in open-source projects?
-                </h3>
-                <div
-                  className="w-6 h-6 cursor-pointer transition-transform data-[open=true]:rotate-90"
-                  data-open="false"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="#27272a"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M9 6l6 6l-6 6"></path>
-                  </svg>
-                </div>
-              </div>
-              <p
-                className="text-base text-zinc-500 py-6 border-b border-zinc-200 hidden data-[open=true]:block"
-                data-open="false"
-              >
-                Generally, it is accepted to use Windster in open-source
-                projects, as long as it is not a UI library, a theme, a
-                template, a page-builder that would be considered as an
-                alternative to Windster itself. With that being said, feel free
-                to use this design kit for your open-source projects.
-              </p>
-            </div>
-          </div>
+        <div class="all-posts-btn-wrapper">
+          <LinkButton href="/posts/">
+            All Posts
+            <svg xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+              ></path>
+            </svg>
+          </LinkButton>
         </div>
-      </section>
 
-      <!-- Section FAQ -->
-      <section>
-        <!-- FAQ Container -->
-        <div
-          class="mx-auto w-full w-1600px px-5 py-16 md:px-10 md:py-24 lg:py-32"
-        >
-          <!-- FAQ Title -->
-          <div class="mb-8 text-center md:mb-12 lg:mb-16">
-            <h2 class="text-3xl font-bold md:text-5xl">Frequently Asked</h2>
-            <p class="mx-auto mt-4 max-w-lg text-[#647084]">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit ut
-              aliquam,purus sit amet luctus magna fringilla urna
+        <!-- Section FAQ -->
+        <section>
+          <!-- FAQ Container -->
+          <div
+            class="mx-auto w-full w-1600px px-5 py-16 md:px-10 md:py-24 lg:py-32"
+          >
+            <!-- FAQ Title -->
+            <div class="mb-8 text-center md:mb-12 lg:mb-16">
+              <h2 class="text-3xl font-bold md:text-5xl">Frequently Asked</h2>
+              <p class="mx-auto mt-4 max-w-lg text-[#647084]">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit ut
+                aliquam,purus sit amet luctus magna fringilla urna
+              </p>
+            </div>
+            <!-- FAQ Content -->
+            <div class="mb-12 flex flex-col items-center">
+              <!-- FAQ Item -->
+              <div
+                class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
+              >
+                <div class="flex cursor-pointer justify-between">
+                  <p class="text-xl font-bold">
+                    How this theme is different from others in market?
+                  </p>
+                  <div
+                    class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
+                  >
+                    <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
+                    <div class="h-0.5 w-5 bg-[#276ef1]"></div>
+                  </div>
+                </div>
+                <p class="mb-4">
+                  Pellentesque in nisi aliquet, pellentesque purus eget,
+                  imperdiet turpis. Fusce at enim quis neque viverra convallis.
+                  Vivamus ut elementum leo, eget tempus nisl. Sed viverra enim
+                  ac turpis posuere consectetur. Sed enim nibh, consequat vitae
+                  lacus eu, ullamcorper ullamcorper massa. Pellentesque purus
+                  eget, imperdiet turpis.
+                </p>
+              </div>
+
+              <!-- FAQ Item -->
+              <div
+                class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
+              >
+                <div
+                  class="flex cursor-pointer justify-between"
+                  onclick="toggleAnswer(this)"
+                >
+                  <p class="text-xl font-bold">
+                    What is your policy on distributon of Flowspark assets?
+                  </p>
+                  <div
+                    class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
+                  >
+                    <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
+                    <div class="h-0.5 w-5 bg-[#276ef1]"></div>
+                  </div>
+                </div>
+                <p class="mb-4 answer" style="display: none;">
+                  Pellentesque in nisi aliquet, pellentesque purus eget,
+                  imperdiet turpis. Fusce at enim quis neque viverra convallis.
+                  Vivamus ut elementum leo, eget tempus nisl. Sed viverra enim
+                  ac turpis posuere consectetur. Sed enim nibh, consequat vitae
+                  lacus eu, ullamcorper ullamcorper massa. Pellentesque purus
+                  eget, imperdiet turpis.
+                </p>
+              </div>
+
+              <script>
+                function toggleAnswer(questionContainer) {
+                  var answer = questionContainer.nextElementSibling;
+                  if (answer.style.display === "none") {
+                    answer.style.display = "block";
+                  } else {
+                    answer.style.display = "none";
+                  }
+                }
+              </script>
+
+              <!-- FAQ Item -->
+              <div
+                class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
+              >
+                <div class="flex cursor-pointer justify-between">
+                  <p class="text-xl font-bold">
+                    How can I contribute to Flowspark?
+                  </p>
+                  <div
+                    class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
+                  >
+                    <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
+                    <div class="h-0.5 w-5 bg-[#276ef1]"></div>
+                  </div>
+                </div>
+                <p class="mb-4">
+                  Pellentesque in nisi aliquet, pellentesque purus eget,
+                  imperdiet turpis. Fusce at enim quis neque viverra convallis.
+                  Vivamus ut elementum leo, eget tempus nisl. Sed viverra enim
+                  ac turpis posuere consectetur. Sed enim nibh, consequat vitae
+                  lacus eu, ullamcorper ullamcorper massa. Pellentesque purus
+                  eget, imperdiet turpis.
+                </p>
+              </div>
+              <!-- FAQ Item -->
+              <div
+                class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
+              >
+                <div class="flex cursor-pointer justify-between">
+                  <p class="text-xl font-bold">
+                    What other themes do you have?
+                  </p>
+                  <div
+                    class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
+                  >
+                    <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
+                    <div class="h-0.5 w-5 bg-[#276ef1]"></div>
+                  </div>
+                </div>
+                <p class="mb-4">
+                  Pellentesque in nisi aliquet, pellentesque purus eget,
+                  imperdiet turpis. Fusce at enim quis neque viverra convallis.
+                  Vivamus ut elementum leo, eget tempus nisl. Sed viverra enim
+                  ac turpis posuere consectetur. Sed enim nibh, consequat vitae
+                  lacus eu, ullamcorper ullamcorper massa. Pellentesque purus
+                  eget, imperdiet turpis.
+                </p>
+              </div>
+            </div>
+            <!-- FAQ Text -->
+            <p class="text-center">
+              Can’t find the answer you’re looking for? Reach out to our <a
+                href="#">customer support team</a
+              >.
             </p>
           </div>
-          <!-- FAQ Content -->
-          <div class="mb-12 flex flex-col items-center">
-            <!-- FAQ Item -->
-            <div
-              class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
-            >
-              <div class="flex cursor-pointer justify-between">
-                <p class="text-xl font-bold">
-                  How this theme is different from others in market?
-                </p>
-                <div
-                  class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
-                >
-                  <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
-                  <div class="h-0.5 w-5 bg-[#276ef1]"></div>
-                </div>
-              </div>
-              <p class="mb-4">
-                Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
-                turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
-                elementum leo, eget tempus nisl. Sed viverra enim ac turpis
-                posuere consectetur. Sed enim nibh, consequat vitae lacus eu,
-                ullamcorper ullamcorper massa. Pellentesque purus eget,
-                imperdiet turpis.
-              </p>
-            </div>
-
-            <!-- FAQ Item -->
-            <div
-              class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
-            >
-              <div
-                class="flex cursor-pointer justify-between"
-                onclick="toggleAnswer(this)"
-              >
-                <p class="text-xl font-bold">
-                  What is your policy on distributon of Flowspark assets?
-                </p>
-                <div
-                  class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
-                >
-                  <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
-                  <div class="h-0.5 w-5 bg-[#276ef1]"></div>
-                </div>
-              </div>
-              <p class="mb-4 answer" style="display: none;">
-                Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
-                turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
-                elementum leo, eget tempus nisl. Sed viverra enim ac turpis
-                posuere consectetur. Sed enim nibh, consequat vitae lacus eu,
-                ullamcorper ullamcorper massa. Pellentesque purus eget,
-                imperdiet turpis.
-              </p>
-            </div>
-
-            <script>
-              function toggleAnswer(questionContainer) {
-                var answer = questionContainer.nextElementSibling;
-                if (answer.style.display === "none") {
-                  answer.style.display = "block";
-                } else {
-                  answer.style.display = "none";
-                }
-              }
-            </script>
-
-            <!-- FAQ Item -->
-            <div
-              class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
-            >
-              <div class="flex cursor-pointer justify-between">
-                <p class="text-xl font-bold">
-                  How can I contribute to Flowspark?
-                </p>
-                <div
-                  class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
-                >
-                  <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
-                  <div class="h-0.5 w-5 bg-[#276ef1]"></div>
-                </div>
-              </div>
-              <p class="mb-4">
-                Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
-                turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
-                elementum leo, eget tempus nisl. Sed viverra enim ac turpis
-                posuere consectetur. Sed enim nibh, consequat vitae lacus eu,
-                ullamcorper ullamcorper massa. Pellentesque purus eget,
-                imperdiet turpis.
-              </p>
-            </div>
-            <!-- FAQ Item -->
-            <div
-              class="mb-6 max-w-4xl border border-solid border-[#dfdfdf] bg-[#f2f2f7] p-8"
-            >
-              <div class="flex cursor-pointer justify-between">
-                <p class="text-xl font-bold">What other themes do you have?</p>
-                <div
-                  class="relative ml-10 mt-1 flex h-5 w-5 items-center justify-center"
-                >
-                  <div class="absolute h-5 w-0.5 bg-[#276ef1]"></div>
-                  <div class="h-0.5 w-5 bg-[#276ef1]"></div>
-                </div>
-              </div>
-              <p class="mb-4">
-                Pellentesque in nisi aliquet, pellentesque purus eget, imperdiet
-                turpis. Fusce at enim quis neque viverra convallis. Vivamus ut
-                elementum leo, eget tempus nisl. Sed viverra enim ac turpis
-                posuere consectetur. Sed enim nibh, consequat vitae lacus eu,
-                ullamcorper ullamcorper massa. Pellentesque purus eget,
-                imperdiet turpis.
-              </p>
-            </div>
-          </div>
-          <!-- FAQ Text -->
-          <p class="text-center">
-            Can’t find the answer you’re looking for? Reach out to our <a
-              href="#">customer support team</a
-            >.
-          </p>
-        </div>
+        </section>
       </section>
-    </section>
+    </body>
 
-    <section id="ceshi">
-      <h2>hahhhha</h2>
-
-      <span>wo de ha hhaha laile </span>
-
-      <div>真的不错哈哈哈</div>
-    </section>
-
-    <style>
-      #ceshi {
-        width: 500px;
-        background-color: #00ff95;
-      }
-
-      #ceshi h2 {
-        background-color: #cc00ff;
-
-        width: 300px;
-      }
-
-      #ceshi span {
-        background-color: #ff0000;
-      }
-
-      #ceshi div {
-        background-color: #ffbb00;
-      }
-    </style>
+    <Footer />
   </main>
 
-  <Footer />
-</Layout>
+  <style>
+    /* ===== Hero Section ===== */
 
-<style>
-  /* ===== Hero Section ===== */
+    /* 设置第一个 h2 元素的字体为 Arial，颜色为红色 */
+    #hero h2:nth-of-type(1) {
+      font-family: Arial, sans-serif;
+      color: red;
+      font-size: 25px; /* 设置字体大小为 16 像素 */
+      margin-bottom: 0px;
 
-  /* 设置第一个 h2 元素的字体为 Arial，颜色为红色 */
-  #hero h2:nth-of-type(1) {
-    font-family: Arial, sans-serif;
-    color: red;
-    font-size: 25px; /* 设置字体大小为 16 像素 */
-    margin-bottom: 0px;
-    /* text-align: left; */
-    background-color: #0004ff;
-  }
+      /* background-color: #0004ff; */
+    }
 
-  /* 设置第二个 h2 元素的字体为 Helvetica，颜色为绿色 */
+    /* 设置第二个 h2 元素的字体为 Helvetica，颜色为绿色 */
 
-  #hero h2:nth-of-type(2) {
-    font-family: Helvetica, sans-serif;
-    color: green;
-    font-size: 22px; /*设置字体大小为 16 像素 */
-    margin-bottom: 10px;
-    /* text-align: left; */
-    white-space: pre-wrap;
-    background-color: #3700ff;
-  }
+    #hero h2:nth-of-type(2) {
+      font-family: Helvetica, sans-serif;
+      color: green;
+      font-size: 22px; /*设置字体大小为 16 像素 */
+      margin-bottom: 10px;
+      /* text-align: left; */
+      white-space: pre-wrap;
+      /* background-color: #3700ff; */
+    }
 
-  /* 设置第三个 h2 元素的字体为 Times New Roman，颜色为蓝色 */
-  #hero h2:nth-of-type(3) {
-    font-family: "Times New Roman", serif;
-    color: green;
-    font-size: 22px; /* 设置字体大小为 16 像素 */
-    margin-bottom: 10px;
-    background-color: #00f7ff;
-  }
+    /* 设置第三个 h2 元素的字体为 Times New Roman，颜色为蓝色 */
+    #hero h2:nth-of-type(3) {
+      font-family: "Times New Roman", serif;
+      color: green;
+      font-size: 22px; /* 设置字体大小为 16 像素 */
+      margin-bottom: 10px;
+      /* background-color: #00f7ff; */
+    }
 
-  /* #main-content {
+    /* #main-content {
     margin: 0 auto; 
   } */
-  #hero h2:nth-of-type(4) {
-    position: relative; /* 设置标题为相对定位 */
-    left: 1000px; /* 设置标题的左边距为视频容器的左边距的负值 */
-  }
+    #hero h2:nth-of-type(4) {
+      position: relative; /* 设置标题为相对定位 */
+      left: 1000px; /* 设置标题的左边距为视频容器的左边距的负值 */
+    }
 
-  .move-right {
-    margin-left: 190px;
-  }
+    .move-right {
+      margin-left: 190px;
+    }
 
-  #hero {
-    @apply pb-6 pt-6;
+    #hero {
+      @apply pb-6 pt-6;
 
-    text-align: center;
+      text-align: center;
 
-    width: 1100px;
-  }
+      width: 1100px;
+    }
 
-  #article {
-    width: 1100px;
-  }
+    #article {
+      width: 1100px;
+    }
 
-  #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
-    background-color: #ff0080;
+    #hero h1 {
+      @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+      /* background-color: #ff0080; */
 
-    font-family: Arial, sans-serif;
-  }
-  #hero .rss-link {
-    @apply mb-6;
-  }
-  #hero .rss-icon {
-    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
-  }
-  #hero p {
-    @apply my-2;
-  }
-  .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
+      font-family: Arial, sans-serif;
+    }
+    #hero .rss-link {
+      @apply mb-6;
+    }
+    #hero .rss-icon {
+      @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
+    }
+    #hero p {
+      @apply my-2;
+    }
+    .social-wrapper {
+      @apply mt-4 flex flex-col sm:flex-row sm:items-center;
+    }
+    .social-links {
+      @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
+    }
 
-  /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
-  #recent-posts {
-    @apply pb-7 pt-12;
-  }
-  #featured h2,
-  #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
-    background-color: #ff0080;
+    /* ===== Featured & Recent Posts Sections ===== */
+    #featured,
+    #recent-posts {
+      @apply pb-7 pt-12;
+    }
+    #featured h2,
+    #recent-posts h2 {
+      @apply text-2xl font-semibold tracking-wide;
 
-    text-align: center;
-  }
+      text-align: center;
+    }
 
-  .all-posts-btn-wrapper {
-    @apply my-8 text-center;
-    background-color: #ff0080;
+    .all-posts-btn-wrapper {
+      @apply my-8 text-center;
 
-    margin: 0 auto;
-  }
-</style>
+      margin: 0 auto;
+    }
+  </style>
+</Layout>

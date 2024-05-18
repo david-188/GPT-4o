@@ -3,8 +3,8 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
   author: "Sat Naing",
-  desc: "An introduction and demonstration of the Sora text-to-video tool. ",
-  title: "Sora Ai",
+  desc: "We’re announcing GPT-4o, our new flagship model that can reason across audio, vision, and text in real time.",
+  title: "GPT-4o",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 3,
